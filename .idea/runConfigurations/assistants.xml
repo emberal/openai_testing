@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="assistants" type="NodeJSConfigurationType" node-parameters="--env-file=.env.local" path-to-js-file="src/assistants.ts" working-dir="$PROJECT_DIR$">
+    <method v="2" />
+  </configuration>
+</component>
