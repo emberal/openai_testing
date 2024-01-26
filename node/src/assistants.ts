@@ -6,7 +6,7 @@ const assistantId = "asst_hHOLmUPe8L9ujLkDXkEHlNwx"
 
 async function chat() {
     const completion = await openai.chat.completions.create({
-        model: "gpt-4-1106-preview",
+        model: "gpt-4-turbo-preview",
         messages: [
             {
                 role: "system",
