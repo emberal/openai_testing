@@ -8,13 +8,20 @@ openai = AsyncOpenAI(
     api_key=os.getenv("OPENAI_API_KEY"),
 )
 
-# TODO create new assistant
-assistantId = "asst_hHOLmUPe8L9ujLkDXkEHlNwx"
+assistantId = "asst_MFPQ5CAGRV7GFD9IwKojZMLS"
+
+GPT = "gpt-3.5-turbo-1106"
+
+assistantInstructions = """
+Du er en anbudsassistent som skal hjelpe et IT konsulentselskap med å skrive anbud og oppsummerere dokumenter.
+Du skal være en hjelpsom og hyggelig assistent som er flink til å skrive og oppsummere dokumenter.
+Du skal ikke bruke unødvendig fancy ord.
+"""
 
 
-async def chat():
+async def chat() -> None:
     completion = await openai.chat.completions.create(
-        model="gpt-4-turbo-preview",
+        model=GPT,
         messages=[
             {
                 "role": "system",
@@ -29,22 +36,31 @@ async def chat():
     print(completion.choices[0])
 
 
-async def createFile():
+async def createAssistant() -> None:
+    assistant = await openai.beta.assistants.create(model=GPT,
+                                                    name="Anbudsassistent",
+                                                    description="Anbudsassistent",
+                                                    instructions=assistantInstructions,
+                                                    tools=[{"type": "retrieval"}])
+    print(f"Assistant created: {assistant.id}")
+
+
+async def uploadFile() -> None:
     # Upload a file to OpenAI
     file = await openai.files.create(
-        file=open("../USE OF ARTIFICIAL INTELLIGENCE TO PREDICT THE ACCURACY OF PRE-TENDER BUILDING COST ESTIMATE.pdf",
+        file=open("../ai_tender_assitant_paper.pdf",
                   "rb"),
         purpose="assistants",
     )
 
-    # Add the uploaded file to the assitant
+    # Add the uploaded file to the assistant
     assistant = await openai.beta.assistants.files.create(assistantId, file_id=file.id)
     print(assistant)
 
 
 # https://medium.com/@ralfelfving/learn-how-to-programatically-upload-files-using-openai-assistants-api-322cb5e6d2fd
-async def summarizeFile():
-    fileId = "file-gzvWWoV6JJ8KXOUc8hNB6e8J"
+async def summarizeFile() -> None:
+    # fileId = "file-gzvWWoV6JJ8KXOUc8hNB6e8J"
 
     # Create a new thread
     thread = await openai.beta.threads.create()
@@ -53,8 +69,8 @@ async def summarizeFile():
     message = await openai.beta.threads.messages.create(
         thread.id,
         role="user",
-        content="Summarize the introduction",
-        file_ids=[fileId]
+        content="Summarize the introduction of the file \"ai_tender_assitant_paper.pdf\"",
+        # file_ids=[fileId] # We could also use a file id here instead of writing the name of the file in the content
     )
 
     print("Message created")
@@ -64,19 +80,7 @@ async def summarizeFile():
 
     print("Run created")
 
-    # Check the status of the run
-    runStatus = await openai.beta.threads.runs.retrieve(run.id, thread_id=thread.id)
-    print(runStatus.status)  # In progress
-
-    # Wait for the run to complete or fail
-    while runStatus.status != "completed":
-        await asyncio.sleep(1)
-        runStatus = await openai.beta.threads.runs.retrieve(run.id, thread_id=thread.id)
-
-        # Check for failed, cancelled, or expired status
-        if runStatus.status in ["failed", "cancelled", "expired"]:
-            print(f"Run status is '{runStatus.status}'. Unable to complete the request.")
-            break  # Exit the loop if the status indicates a failure or cancellation
+    await runMessage(run.id, thread.id)
 
     # Fetch all messages of the thread
     messages = await openai.beta.threads.messages.list(thread.id)
@@ -85,6 +89,21 @@ async def summarizeFile():
 
     # Delete the thread
     await openai.beta.threads.delete(thread.id)
+
+
+async def runMessage(run_id: str, thread_id: str) -> None:
+    # Check the status of the run
+    runStatus = await openai.beta.threads.runs.retrieve(run_id, thread_id=thread_id)
+    print(runStatus.status)  # In progress
+
+    while runStatus.status != "completed":
+        await asyncio.sleep(1)
+        runStatus = await openai.beta.threads.runs.retrieve(run_id, thread_id=thread_id)
+
+        # Check for failed, cancelled, or expired status
+        if runStatus.status in ["failed", "cancelled", "expired"]:
+            print(f"Run status is '{runStatus.status}'. Unable to complete the request.")
+            break  # Exit the loop if the status indicates a failure or cancellation
 
 
 async def main() -> None:
