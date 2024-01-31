@@ -1,0 +1,56 @@
+main 01/31/2024 02:43:14 PM ---------------------------
+main 01/31/2024 02:43:14 PM Assistant 'Anbudsassistent' created: asst_kahZc8gWpvfOu7bd0EceAJWy
+main 01/31/2024 02:43:14 PM With description: Anbudsassistent
+main 01/31/2024 02:43:14 PM With instructions: 
+Du er en anbudsassistent som skal hjelpe et IT konsulentselskap med å skrive anbud og oppsummerere dokumenter.
+Du skal være en hjelpsom og hyggelig assistent som er flink til å skrive og oppsummere dokumenter.
+Du skal ikke bruke unødvendig fancy ord.
+Du skal ikke gjenta spørsmålet i svaret.
+Du skal gi grundige svar, med forklaringer.
+
+main 01/31/2024 02:43:14 PM ---------------------------
+main 01/31/2024 02:43:15 PM Thread created: thread_oLQQKuWBc99WGaH4PBJga95m
+main 01/31/2024 02:43:48 PM Uploading file '/home/martin/Downloads/AI_for_anbud_og_kompetansesk.docs' to assistant asst_kahZc8gWpvfOu7bd0EceAJWy
+01/31/2024 02:44:45 PM ---------------------------
+01/31/2024 02:44:45 PM Assistant 'Anbudsassistent' created: asst_9ezj3D6kxfYEfEIxikUsIhRS
+01/31/2024 02:44:45 PM With description: Anbudsassistent
+01/31/2024 02:44:45 PM With instructions: 
+Du er en anbudsassistent som skal hjelpe et IT konsulentselskap med å skrive anbud og oppsummerere dokumenter.
+Du skal være en hjelpsom og hyggelig assistent som er flink til å skrive og oppsummere dokumenter.
+Du skal ikke bruke unødvendig fancy ord.
+Du skal ikke gjenta spørsmålet i svaret.
+Du skal gi grundige svar, med forklaringer.
+
+01/31/2024 02:44:45 PM ---------------------------
+01/31/2024 02:44:46 PM Thread created: thread_EZKp90KvecwNk1syzMkDwIAq
+01/31/2024 02:44:59 PM Uploading file '/home/martin/Downloads/AI_for_anbud_og_kompetansesk.docx' to assistant asst_9ezj3D6kxfYEfEIxikUsIhRS
+01/31/2024 02:45:52 PM > Gi en kort oppsummering av konkurransen i dokumentet "AI_for_anbud_og_kompetansesk.docx"
+01/31/2024 02:46:36 PM 
+Dokumentet "AI_for_anbud_og_kompetansesk.docx" inneholder detaljerte instruksjoner og krav knyttet til innsendelse og utforming av tilbud i en anbudskonkurranse. Viktige punkter inkluderer:
+
+- **Innlevering av tilbud:** Tilbud skal leveres elektronisk gjennom Mercell-portalen innen en gitt frist. Leverandøren bærer risikoen for at tilbudet blir levert innen fristen. Eventuelle forespørsler om forlengelse av fristen må sendes til oppdragsgiver minst 3 virkedager før fristens utløp.
+  
+- **Tilbudets utforming:** Tilbudet må utformes i henhold til disposisjonen som følger av konkurransen. Dokumenter som skal vedlegges under innsendelsen inkluderer tilbudsbrev, kravspesifikasjon, pristilbud og eventuelt en forpliktelseserklæring. Leverandøren bes også om å levere en sladdet versjon av tilbudet for å håndtere eventuelle innsynsbegjæringer.
+
+- **Forbehold:** Eventuelle forbehold i tilbudet må være presise og entydige for at oppdragsgiver skal kunne vurdere dem uten ytterligere kontakt med leverandøren. Forbehold som ikke kan kostnadsberegnes kan lede til at et tilbud avvises som ufullstendig.
+
+- **Kontraktstildeling:** Beslutningen om kontraktstildeling vil varsles skriftlig, og en begrunnelse for valget vil bli inkludert. Det nevnes også en karensperiode rundt annonseringen av tildelingen.
+
+- **Kontrakter:** Den inngåtte kontrakten vil bygge på Statens standardavtale SSA-L og ha en varighet på fire år, med mulighet for forlengelse.
+
+- **Ytterligere krav:** Dokumentet inkluderer også krav relatert til lønns- og arbeidsvilkår, elektroniske fakturaer, og registrering i Merverdiavgiftsregisteret for utenlandske næringsdrivende.
+
+Foruten disse, oppsummerer dokumentet nødvendigheten av leveranseoppfølging og hvordan oppdragsgivers evaluering av tidligere leveranser kan benyttes som referanse i fremtidige konkurranser eller anskaffelser.
+01/31/2024 02:47:35 PM > Kan du utdype første punkt?
+01/31/2024 02:48:03 PM 
+Selvfølgelig! Første punkt omhandler **innlevering av tilbud** i anbudskonkurransen, og her er detaljene utdypet:
+
+- **Elektronisk innsending gjennom Mercell:** Tilbudet skal leveres elektronisk via Mercell-portalen. Dette er den eneste godkjente metoden for innsendelse, og det sikrer at alle tilbud håndteres konfidensielt og i tråd med reglene for behandling av tilbud.
+
+- **Fristforhold:** Det understrekes viktigheten av å overholde innsendingsfristen for tilbudet. Leverandøren har ansvaret for å sikre at tilbudet blir innsendt i tide, innen fristen som er oppgitt i anbudsdokumentene. Å sikre punktligheten er avgjørende, da forsinket innsendelse kan føre til avvisning av tilbudet.
+
+- **Risiko:** Risikoen ved sen innsendelse ligger helt hos leverandøren, noe som betyr at det er leverandørens plikt å sørge for at tilbudet blir levert innen fristen, uten å påberope seg problemer med teknisk utstyr, nettverk eller liknende.
+
+- **Forlengelse av frist:** Hvis leverandøren av en eller annen grunn ser at det kan bli vanskelig å levere tilbudet innen den oppsatte fristen, kan det sendes en forespørsel om forlengelse av fristen til oppdragsgiver. En slik forespørsel må imidlertid inngis minst tre virkedager før fristen løper ut. Det betyr at forespørsler om forlengelse som kommer inn for sent, ikke vil kunne bli vurdert.
+
+Dette punktet understreker altså viktigheten av punktlighet og nøye planlegging fra leverandørens side i anbudssammenheng. Det er essensielt å være oppmerksom på og overholde alle frister for å sikre at tilbudet blir vurdert i konkurransen.
