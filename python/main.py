@@ -1,13 +1,14 @@
 import asyncio
 import os
 import logging
+from typing import Literal
 
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
 
 logging.basicConfig(filename="openai.log", level=logging.WARNING, encoding="utf-8",
                     format='%(asctime)s %(message)s',
-                    datefmt='%m/%d/%Y %I:%M:%S %p')
+                    datefmt='%m/%d/%Y %H:%M:%S')
 
 logger = logging.getLogger("main")
 logger.setLevel(logging.INFO)
@@ -17,20 +18,28 @@ openai = AsyncOpenAI(
     api_key=os.getenv("OPENAI_API_KEY"),
 )
 
-assistantId = "asst_MFPQ5CAGRV7GFD9IwKojZMLS"
-
 GPT = "gpt-4-turbo-preview"
 
-assistantInstructions = """
-Du er en anbudsassistent som skal hjelpe et IT konsulentselskap med å skrive anbud og oppsummerere dokumenter.
-Du skal være en hjelpsom og hyggelig assistent som er flink til å skrive og oppsummere dokumenter.
+instructions = {
+    "anbudInstructions": """
+Du er en anbudsassistent som skal hjelpe et IT konsulentselskap med å skrive anbud.
+Du skal være en hjelpsom og hyggelig assistent som er flink til å skrive dokumenter.
+Du skal ikke bruke unødvendig fancy ord.
+Du skal ikke gjenta spørsmålet i svaret.
+Du skal skrive et svar til dokumentet eller dokumentene som er lastet opp.
+""",
+
+    "oppsummeringInstructions": """
+Du er en anbudsassistent som skal hjelpe et IT konsulentselskap med å oppsummere dokumenter.
+Du skal være en hjelpsom og hyggelig assistent som er flink til å oppsummere dokumenter.
 Du skal ikke bruke unødvendig fancy ord.
 Du skal ikke gjenta spørsmålet i svaret.
 Du skal gi grundige svar, med forklaringer.
 """
+}
 
 
-async def chat() -> None:
+async def tellMeAJoke() -> None:
     completion = await openai.chat.completions.create(
         model=GPT,
         messages=[
@@ -44,22 +53,27 @@ async def chat() -> None:
             }
         ]
     )
-    print(completion.choices[0])
+    print(completion.choices[0].message.content)
 
 
-async def createAssistant():
+async def createAssistant(key: Literal["anbudInstructions", "oppsummeringInstructions"]):
     name = "Anbudsassistent"
     assistant = await openai.beta.assistants.create(model=GPT,
                                                     name=name,
                                                     description="Anbudsassistent",
-                                                    instructions=assistantInstructions,
+                                                    instructions=instructions[key],
                                                     tools=[{"type": "retrieval"}])
     logger.info("---------------------------")
     logger.info(f"Assistant '{name}' created: '{assistant.id}' using {GPT}")
-    logger.info(f"With instructions: {assistantInstructions}")
+    logger.info(f"With instructions: {instructions[key]}")
     logger.info("---------------------------")
     print(f"Assistant created: {assistant.id}")
     return assistant
+
+
+async def getAssistants() -> list:
+    assistants = await openai.beta.assistants.list()
+    return assistants.data
 
 
 async def uploadFile(assistant_id: str, file) -> None:
@@ -82,6 +96,12 @@ async def deleteAssistant(assistant_id: str) -> None:
     logger.debug(f"Deleting assistant {assistant_id}")
     await openai.beta.assistants.delete(assistant_id)
     logger.debug("Assistant deleted")
+
+
+async def clearAssistants() -> None:
+    assistants = await getAssistants()
+    for assistant in assistants:
+        await deleteAssistant(assistant.id)
 
 
 async def createThread():
@@ -127,33 +147,6 @@ async def sendMessage(thread_id: str, assistant_id: str, content: str):
     logger.info(f"GPT\n{response}")
 
 
-# https://medium.com/@ralfelfving/learn-how-to-programatically-upload-files-using-openai-assistants-api-322cb5e6d2fd
-async def summarizeFile() -> None:
-    # Create a new thread
-    thread = await createThread()
-
-    # Create a message with a file
-    message = await openai.beta.threads.messages.create(
-        thread.id,
-        role="user",
-        content="Summarize the introduction of the file \"ai_tender_assitant_paper.pdf\"",
-        # file_ids=[fileId] # We could also use a file id here instead of writing the name of the file in the content
-    )
-
-    # Create a run with the previously created message
-    run = await openai.beta.threads.runs.create(thread.id, assistant_id=assistantId)
-
-    await waitForRunToComplete(run.id, thread.id)
-
-    # Fetch all messages of the thread
-    messages = await openai.beta.threads.messages.list(thread.id)
-
-    print(messages.data[0].content)
-
-    # Delete the thread
-    await openai.beta.threads.delete(thread.id)
-
-
 async def waitForRunToComplete(run_id: str, thread_id: str) -> None:
     # Check the status of the run
     runStatus = await openai.beta.threads.runs.retrieve(run_id, thread_id=thread_id)
@@ -173,21 +166,30 @@ async def main() -> None:
     assistant = None
     thread = None
     while True:
-        print("1. Chat")
+        print("1. Tell me a joke")
         print("2. Create assistant")
         print("3. Create thread")
         print("4. Upload file")
         print("5. Send single message")
         print("6. Chat in thread")
-        print("7. Summarize file")
+        print("7. List assistants")
+        print("8. Clear assistants")
         print("0. Exit")
 
         choice = input("Choice: ")
 
         if choice == "1":
-            await chat()
+            await tellMeAJoke()
         elif choice == "2":
-            assistant = await createAssistant()
+            print("1. Anbud")
+            print("2. Oppsummering")
+            choice = input("Choice: ")
+            if choice == "1":
+                assistant = await createAssistant("anbudInstructions")
+            elif choice == "2":
+                assistant = await createAssistant("oppsummeringInstructions")
+            else:
+                print("Invalid choice")
         elif choice == "3":
             thread = await createThread()
         elif choice == "4":
@@ -225,7 +227,14 @@ async def main() -> None:
                     break
                 await sendMessage(thread.id, assistant.id, message)
         elif choice == "7":
-            await summarizeFile()
+            assistants = await getAssistants()
+            for assistant in assistants:
+                print(f"{assistant.id}: {assistant.name}")
+        elif choice == "8":
+            print("Clearing assistants...")
+            await clearAssistants()
+            assistant = None
+            thread = None
         elif choice == "0":
             print("Cleaning up...")
             if assistant is not None:
@@ -233,7 +242,7 @@ async def main() -> None:
             if thread is not None:
                 await deleteThread(thread.id)
 
-            logging.info("""
+            logger.info("""
 ---------------------------
 Session ended
 ---------------------------""")
