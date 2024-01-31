@@ -211,6 +211,13 @@ async def main() -> None:
             message = input("> ")
             await sendMessage(thread.id, assistant.id, message)
         elif choice == "6":
+            if assistant is None:
+                print("You need to create an assistant first")
+                continue
+            if thread is None:
+                print("You need to create a thread first")
+                continue
+
             print("Type 'exit' to exit")
             while True:
                 message = input("> ")
