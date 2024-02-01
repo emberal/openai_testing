@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3733dbd7-e46f-4499-af93-c296875169e0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/.idea/python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/python/.idea/python.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="3733dbd7-e46f-4499-af93-c296875169e0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +49,7 @@
       <workItem from="1706281969343" duration="1895000" />
       <workItem from="1706290960916" duration="5000" />
       <workItem from="1706520082196" duration="617000" />
+      <workItem from="1706780469561" duration="6000" />
     </task>
     <servers />
   </component>
@@ -67,6 +63,8 @@
   </component>
   <component name="WfRunsListSearchHistory"><![CDATA[{
   "history": [
+    {
+    },
     {
     },
     {

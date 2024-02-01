@@ -1,0 +1,193 @@
+{
+  "konsulenter": [
+    {
+      "navn": "Emilie Solberg",
+      "alder": 29,
+      "erfaringÅr": 7,
+      "teknologier": [
+        "C#",
+        ".NET",
+        "Azure"
+      ],
+      "roller": [
+        "Backend-utvikler",
+        "DevOps-ingeniør"
+      ],
+      "prosjekter": [
+        {
+          "navn": "SkyGrunnlag",
+          "beskrivelse": "Design og implementasjon av en skalerbar backend-løsning i skyen for en finansiell tjeneste. Arbeidet inkluderte oppsett av CI/CD-pipelines, sikkerhetsvurderinger og datalagring med fokus på GDPR-krav. Teknologier som .NET Core, Azure Functions og Azure SQL Database ble brukt for å oppnå en høy grad av automatisering og sikkerhetsstandarder.",
+          "teknologier": [
+            "C#",
+            ".NET Core",
+            "Azure Functions",
+            "Azure SQL"
+          ],
+          "rolle": "DevOps-ingeniør"
+        },
+        {
+          "navn": "DokumentFlyt",
+          "beskrivelse": "Utvikling av en mikrotjenestebasert løsning for håndtering av dokumentflyt i en større organisasjon. Prosjektet omfattet både design og utvikling av et sett med RESTful APIer og et brukergrensesnitt for endbrukere. En viktig del av løsningen var integrasjonen med eksisterende eldre systemer for å sikre sømløs overføring og behandling av dokumenter.",
+          "teknologier": [
+            "C#",
+            "Docker",
+            "Kubernetes",
+            "React"
+          ],
+          "rolle": "Backend-utvikler"
+        }
+      ]
+    },
+    {
+      "navn": "Oskar Fjellheim",
+      "alder": 34,
+      "erfaringÅr": 12,
+      "teknologier": [
+        "Java",
+        "Spring Framework",
+        "Angular",
+        "PostgreSQL"
+      ],
+      "roller": [
+        "Fullstack-utvikler",
+        "Prosjektleder"
+      ],
+      "prosjekter": [
+        {
+          "navn": "FinansPortalen",
+          "beskrivelse": "Leder av et utviklingsteam for å bygge en omfattende webapplikasjon for sammenligning av finansielle produkter. Prosjektet involverte tett samarbeid med produktdesignere for å lage en intuitiv brukeropplevelse, og med datavarehus-teamet for å integrere realtidsdatafeeds. Viktige utfordringer inkluderte håndtering av store datamengder og sikring av applikasjonens ytelse under høye laster.",
+          "teknologier": [
+            "Java",
+            "Spring Boot",
+            "Angular",
+            "PostgreSQL",
+            "RabbitMQ"
+          ],
+          "rolle": "Prosjektleder"
+        },
+        {
+          "navn": "HMS-løsningen",
+          "beskrivelse": "Utvikling av en helhetlig løsning for håndtering av helse, miljø og sikkerhet (HMS) i byggebransjen. Systemet omfattet moduler for risikovurdering, incidentrapportering og oppfølging av sikkerhetstiltak. Et nøkkelelement i prosjektet var design og implementasjon av en mobilapp som tillot ansatte å rapportere hendelser direkte fra byggeplasser.",
+          "teknologier": [
+            "Java",
+            "Spring Boot",
+            "Angular",
+            "MongoDB"
+          ],
+          "rolle": "Fullstack-utvikler"
+        }
+      ]
+    },
+    {
+      "navn": "Sara Vik",
+      "alder": 36,
+      "erfaringÅr": 10,
+      "teknologier": [
+        "Python",
+        "Django",
+        "React",
+        "PostgreSQL"
+      ],
+      "roller": [
+        "Fullstack-utvikler",
+        "UX/UI Designer"
+      ],
+      "prosjekter": [
+        {
+          "navn": "E-LæringsPlattform",
+          "beskrivelse": "Utvikling av en omfattende e-læringsplattform designet for å gi ansatte i en global organisasjon tilgang til kursmateriell og opplæringsmoduler. Prosjektet krevde et dypt fokus på brukeropplevelse og tilgjengelighet, samt integrasjon med eksterne systemer for sertifisering og sporing av brukerfremdrift. En iterativ designprosess ble brukt for å kontinuerlig forbedre plattformens brukergrensesnitt basert på tilbakemeldinger fra sluttbrukere.",
+          "teknologier": [
+            "Python",
+            "Django",
+            "React",
+            "PostgreSQL"
+          ],
+          "rolle": "UX/UI Designer"
+        },
+        {
+          "navn": "InnovasjonLab",
+          "beskrivelse": "Ledet et tverrfaglig team for å utvikle prototyper av nye digitale produkter som en del av et innovasjonslaboratorium. Oppdraget omfattet rask prototyping, brukertesting og utvikling av MVPs (Minimum Viable Products) for en rekke forskjellige ideer, fra smarte hjem-applikasjoner til bedriftsinterne effektiviseringsverktøy. Et sterkt fokus på bruker-sentrisk design og smidig metodikk lå til grunn for teamets arbeidsflyt.",
+          "teknologier": [
+            "Python",
+            "Django REST Framework",
+            "Vue.js",
+            "PostgreSQL"
+          ],
+          "rolle": "Prosjektleder"
+        }
+      ]
+    },
+    {
+      "navn": "Jonas Hansen",
+      "alder": 32,
+      "erfaringÅr": 8,
+      "teknologier": [
+        "Java",
+        "Spring Boot",
+        "Docker"
+      ],
+      "roller": [
+        "Backend-utvikler",
+        "Systemarkitekt"
+      ],
+      "prosjekter": [
+        {
+          "navn": "Prosjekt Alfa",
+          "beskrivelse": "Utvikling av et distribuert system for datainnsamling",
+          "teknologier": [
+            "Java",
+            "Kafka",
+            "Cassandra"
+          ],
+          "rolle": "Systemarkitekt"
+        },
+        {
+          "navn": "Prosjekt Beta",
+          "beskrivelse": "Refaktorisering av en monolittisk applikasjon til mikrotjenester",
+          "teknologier": [
+            "Docker",
+            "Kubernetes",
+            "Spring Boot"
+          ],
+          "rolle": "Backend-utvikler"
+        }
+      ]
+    },
+    {
+      "navn": "Lena Nilsen",
+      "alder": 28,
+      "erfaringÅr": 5,
+      "teknologier": [
+        "JavaScript",
+        "React",
+        "Node.js"
+      ],
+      "roller": [
+        "Frontend-utvikler",
+        "Fullstack-utvikler"
+      ],
+      "prosjekter": [
+        {
+          "navn": "Prosjekt Gamma",
+          "beskrivelse": "Utvikling av en progressiv webapplikasjon (PWA) for e-handel",
+          "teknologier": [
+            "React",
+            "Node.js",
+            "Express"
+          ],
+          "rolle": "Frontend-utvikler"
+        },
+        {
+          "navn": "Prosjekt Delta",
+          "beskrivelse": "Implementering av betalingsløsninger og brukerautentisering",
+          "teknologier": [
+            "Node.js",
+            "MongoDB",
+            "JWT"
+          ],
+          "rolle": "Fullstack-utvikler"
+        }
+      ]
+    }
+  ]
+}

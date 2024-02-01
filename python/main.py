@@ -1,4 +1,5 @@
 import asyncio
+import json
 import os
 import logging
 from typing import Literal
@@ -21,6 +22,9 @@ openai = AsyncOpenAI(
 GPT = "gpt-4-turbo-preview"
 
 instructions = {
+    "default": """
+You are a helpful assistant.
+""",
     "anbudInstructions": """
 Du er en anbudsassistent som skal hjelpe et IT konsulentselskap med å skrive anbud.
 Du skal være en hjelpsom og hyggelig assistent som er flink til å skrive dokumenter.
@@ -35,6 +39,12 @@ Du skal være en hjelpsom og hyggelig assistent som er flink til å oppsummere d
 Du skal ikke bruke unødvendig fancy ord.
 Du skal ikke gjenta spørsmålet i svaret.
 Du skal gi grundige svar, med forklaringer.
+""",
+    "kompatetanseMatriseInstructions": """
+Du skal lage en kompetansematrise for et IT konsulentselskap. 
+Kompetansematrisen skal inneholde en kolonne for kategori (kan være systemutvikler, testutvikler, scrummaster, 
+arkitekt eller annet), navn på konsulent, og en kort beskrivelse av kompetansen og relevant erfaring. Du skal gi svaret i form av 
+strukturert JSON. Du skal ikke gjennta spørsmålet i svaret. Du skal ikke bruke unødvendig fancy ord.
 """
 }
 
@@ -56,7 +66,30 @@ async def tellMeAJoke() -> None:
     print(completion.choices[0].message.content)
 
 
-async def createAssistant(key: Literal["anbudInstructions", "oppsummeringInstructions"]):
+async def kompetansematrise(konsulent_data: str) -> None:
+    logger.info("Creating kompetansematrise with test consultant data")
+    completion = await openai.chat.completions.create(
+        model=GPT,
+        messages=[
+            {
+                "role": "system",
+                "content": instructions["kompatetanseMatriseInstructions"]
+            },
+            {
+                "role": "user",
+                "content": konsulent_data
+            }
+        ],
+        response_format={"type": "json_object"}
+    )
+    response = completion.choices[0].message.content
+    logger.info(f"Kompetansematrise data:\n{response}")
+    print(response)
+
+
+async def createAssistant(
+        key: Literal["default", "anbudInstructions", "oppsummeringInstructions", "kompatetanseMatriseInstructions"]
+):
     name = "Anbudsassistent"
     assistant = await openai.beta.assistants.create(model=GPT,
                                                     name=name,
@@ -174,6 +207,7 @@ async def main() -> None:
         print("6. Chat in thread")
         print("7. List assistants")
         print("8. Clear assistants")
+        print("9. Kompentansematrise test")
         print("0. Exit")
 
         choice = input("Choice: ")
@@ -181,15 +215,9 @@ async def main() -> None:
         if choice == "1":
             await tellMeAJoke()
         elif choice == "2":
-            print("1. Anbud")
-            print("2. Oppsummering")
-            choice = input("Choice: ")
-            if choice == "1":
-                assistant = await createAssistant("anbudInstructions")
-            elif choice == "2":
-                assistant = await createAssistant("oppsummeringInstructions")
-            else:
-                print("Invalid choice")
+            inst = selectInstruction()
+            if inst is not None:
+                assistant = await createAssistant(inst)
         elif choice == "3":
             thread = await createThread()
         elif choice == "4":
@@ -235,6 +263,9 @@ async def main() -> None:
             await clearAssistants()
             assistant = None
             thread = None
+        elif choice == "9":
+            consultants = getKonsulenter()
+            await kompetansematrise(consultants)
         elif choice == "0":
             print("Cleaning up...")
             if assistant is not None:
@@ -249,6 +280,32 @@ Session ended
             break
         else:
             print("Invalid choice")
+
+
+def getKonsulenter() -> str:
+    with open("konsulenter.json") as file:
+        data = json.load(file)
+    return json.dumps(data)  # Serialize to string
+
+
+def selectInstruction() -> Literal[
+                               "default", "anbudInstructions", "oppsummeringInstructions", "kompatetanseMatriseInstructions"] | None:
+    print("1. Anbud")
+    print("2. Oppsummering")
+    print("3. Kompetansematrise")
+    print("0: Default")
+    choice = input("Choice: ")
+    if choice == "1":
+        return "anbudInstructions"
+    elif choice == "2":
+        return "oppsummeringInstructions"
+    elif choice == "3":
+        return "kompatetanseMatriseInstructions"
+    elif choice == "0":
+        return "default"
+    else:
+        print("Invalid choice")
+        return None
 
 
 asyncio.run(main())
