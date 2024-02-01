@@ -32,21 +32,55 @@ Du skal ikke bruke unødvendig fancy ord.
 Du skal ikke gjenta spørsmålet i svaret.
 Du skal skrive et svar til dokumentet eller dokumentene som er lastet opp.
 """,
-
     "oppsummeringInstructions": """
 Du er en anbudsassistent som skal hjelpe et IT konsulentselskap med å oppsummere dokumenter.
 Du skal være en hjelpsom og hyggelig assistent som er flink til å oppsummere dokumenter.
 Du skal ikke bruke unødvendig fancy ord.
 Du skal ikke gjenta spørsmålet i svaret.
 Du skal gi grundige svar, med forklaringer.
+Du skal skrive om blant annet:
+- Hva ønsker kunden å få ut av prosjektet?
+- Hva skal utvikles?
+- Hvilke krav har kunden?
+- Frister
+- Budsjett
+- Hvilke kompetanse trenger kunden?
+- Andre ting som er relevant for prosjektet
 """,
     "kompatetanseMatriseInstructions": """
 Du skal lage en kompetansematrise for et IT konsulentselskap. 
 Kompetansematrisen skal inneholde en kolonne for kategori (kan være systemutvikler, testutvikler, scrummaster, 
-arkitekt eller annet), navn på konsulent, og en kort beskrivelse av kompetansen og relevant erfaring. Du skal gi svaret i form av 
-strukturert JSON. Du skal ikke gjennta spørsmålet i svaret. Du skal ikke bruke unødvendig fancy ord.
+arkitekt eller annet), navn på konsulent, og en kort beskrivelse av kompetansen og relevant erfaring.
+Du skal gi svaret i form av strukturert JSON.
+Du skal ikke gjennta spørsmålet i svaret.
+Du skal ikke bruke unødvendig fancy ord.
+Du skal velge riktig kategori basert på en oppsummering av en anbudskonkurranse.
 """
 }
+
+konkurranse_oppsummering = """- **Bilag 1 til 11**: Dekker alt fra oppdragsgivers kravspesifikasjon, leverandørens 
+tjenestebeskrivelse, plan for etableringsfasen, tjenestenivå med standardiserte kompensasjoner, administrative 
+bestemmelser, økonomiske aspekter, til databehandleravtalen【19†source】. **Kjernepunkter i krav og spesifikasjoner 
+inkluderer:** - **Bærekraft og effektivisering**: Renholdstjenesten skal benytte bærekraftig og effektiviserende 
+teknologi, samle renholdsplaner i et digitalt system og gjøre dem tilgjengelige for renholdspersonell. Systemet skal 
+støtte delt renholdsareal på ca. 160.000 m^2 konsentrert i videregående skoler og idrettshaller【19†source】. - 
+**Opsjoner for utvidet bruk**: Det er inkludert opsjoner for ytterligere bruk av systemet, som dekker behovet til 
+Fylkeshuset AS og eksterne renholdsleverandører, samt integrasjon med ulike sluttbrukeres booking av rom【19†source】. 
+- **Funksjonalitet**: Systemet skal tilby en rekke funksjoner som tegningsbasert planleggingsverktøy, 
+mobil grensesnitt, nettbasert løsning for ledere og support på norsk. Videre kreves det universell utforming og 
+støtte for å håndtere et stort antall samtidige brukere【23†source. - **Brukervennlighet**: Renholdspersonell skal 
+kunne dokumentere arbeid, melde avvik, og oppdragsgiver skal kunne administrere brukere, definere ekstraoppgaver og 
+kommunisere bestillinger og meldinger gjennom systemet. Det vektlegges at systemet støtter offline-funksjonalitet og 
+er brukervennlig både for ledere og renholdere【23†source】. - **Brukerstøtte og stabilitet**: Support skal være 
+norsk-talende og kunne varsle om kjente feil i systemet samt planlagt nedetid. Beskrivelse av brukerstøtteapparatet, 
+inkludert tilgjengelighet, antall supportmedarbeidere og gjennomsnittlig svartid er nødvendig【27†source】. - 
+**Personvern og sikkerhet**: Det legges vekt på databeskyttelse og informasjonssikkerhet. Blant annet må leverandøren 
+ha et styringssystem for informasjonssikkerhet som møter gjeldende personvernregler, og det skal være klare rutiner 
+for revisjon og tilsyn samt protokoller for hvordan personopplysninger håndteres ved avtalens opphør. 
+Kontaktinformasjon for varsling om sikkerhetsbrudd eller andre relevante henvendelser er også nevnt【45†source】.
+
+Dokumentets detaljerte natur gjenspeiler oppdragsgivers intensjon om å sikre en omfattende og kvalitetssikret løsning 
+som imøtekommer organisasjonens nåværende og fremtidige behov på en bærekraftig, brukervennlig, og sikker måte."""
 
 
 async def tellMeAJoke() -> None:
@@ -68,7 +102,7 @@ async def tellMeAJoke() -> None:
 
 async def kompetansematrise(konsulent_data: str) -> None:
     logger.info("Creating kompetansematrise with test consultant data")
-    completion = await openai.chat.completions.create(
+    stream = await openai.chat.completions.create(
         model=GPT,
         messages=[
             {
@@ -80,11 +114,18 @@ async def kompetansematrise(konsulent_data: str) -> None:
                 "content": konsulent_data
             }
         ],
-        response_format={"type": "json_object"}
+        response_format={"type": "json_object"},
+        stream=True
     )
-    response = completion.choices[0].message.content
-    logger.info(f"Kompetansematrise data:\n{response}")
-    print(response)
+    logger.info("Kompetansematrise data:\n")
+    result = ""
+    async for chunk in stream:
+        if chunk.choices[0].delta.content is not None:
+            response = chunk.choices[0].delta.content
+            result += response
+            print(response, end="")
+    logger.info(result)
+    print()
 
 
 async def createAssistant(
@@ -196,6 +237,10 @@ async def waitForRunToComplete(run_id: str, thread_id: str) -> None:
 
 
 async def main() -> None:
+    logger.info("""
+---------------------------
+Session started
+---------------------------""")
     assistant = None
     thread = None
     while True:
@@ -265,7 +310,7 @@ async def main() -> None:
             thread = None
         elif choice == "9":
             consultants = getKonsulenter()
-            await kompetansematrise(consultants)
+            await kompetansematrise("{" + f"\"oppsummering\":\"{konkurranse_oppsummering}\",{consultants[1:]}")
         elif choice == "0":
             print("Cleaning up...")
             if assistant is not None:
@@ -288,8 +333,9 @@ def getKonsulenter() -> str:
     return json.dumps(data)  # Serialize to string
 
 
-def selectInstruction() -> Literal[
-                               "default", "anbudInstructions", "oppsummeringInstructions", "kompatetanseMatriseInstructions"] | None:
+def selectInstruction() -> (
+        Literal["default", "anbudInstructions", "oppsummeringInstructions", "kompatetanseMatriseInstructions"] | None
+):
     print("1. Anbud")
     print("2. Oppsummering")
     print("3. Kompetansematrise")

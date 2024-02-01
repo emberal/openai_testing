@@ -366,3 +366,196 @@ Session ended
     }
   ]
 }
+02/01/2024 11:26:51 
+---------------------------
+Session ended
+---------------------------
+02/01/2024 11:29:02 
+---------------------------
+Session started
+---------------------------
+02/01/2024 11:29:07 Creating kompetansematrise with test consultant data
+02/01/2024 11:31:09 
+02/01/2024 11:34:01 
+02/01/2024 11:38:03 
+---------------------------
+Session started
+---------------------------
+02/01/2024 11:38:04 Creating kompetansematrise with test consultant data
+02/01/2024 11:38:08 Kompetansematrise data:
+
+02/01/2024 11:38:54 {
+  "kompetansematrise": [
+    {
+      "kategori": "Backend-utvikler",
+      "navn": "Emilie Solberg",
+      "kompetanseBeskrivelse": "Erfaren med C#, .NET, og Azure. Har jobbet med backend-løsninger i skyen og oppsett av CI/CD-pipelines.",
+      "erfaring": "7 år"
+    },
+    {
+      "kategori": "Fullstack-utvikler",
+      "navn": "Oskar Fjellheim",
+      "kompetanseBeskrivelse": "Dyktig i Java, Spring Framework, Angular og PostgreSQL. Har ledet utviklingsteam og jobbet både med frontend og backend.",
+      "erfaring": "12 år"
+    },
+    {
+      "kategori": "UX/UI Designer",
+      "navn": "Sara Vik",
+      "kompetanseBeskrivelse": "Spesialisert i Python, Django, React, og PostgreSQL. Har dyp forståelse for UX/UI-design og brukeropplevelse.",
+      "erfaring": "10 år"
+    },
+    {
+      "kategori": "Systemarkitekt",
+      "navn": "Jonas Hansen",
+      "kompetanseBeskrivelse": "Ekspertise med Java, Spring Boot, Docker. Erfaring med systemarkitektur og design av distribuerte systemer.",
+      "erfaring": "8 år"
+    },
+    {
+      "kategori": "Frontend-utvikler",
+      "navn": "Lena Nilsen",
+      "kompetanseBeskrivelse": "Stor kompetanse i JavaScript, React, Node.js. Har arbeidet med utvikling av progressive webapplikasjoner (PWA) og brukerautentisering.",
+      "erfaring": "5 år"
+    }
+  ]
+}
+02/01/2024 11:44:52 
+---------------------------
+Session ended
+---------------------------
+02/01/2024 11:52:09 
+---------------------------
+Session started
+---------------------------
+02/01/2024 11:52:15 ---------------------------
+02/01/2024 11:52:15 Assistant 'Anbudsassistent' created: 'asst_i8TPJgO78HGpafG37Kk6QIOk' using gpt-4-turbo-preview
+02/01/2024 11:52:15 With instructions: 
+Du er en anbudsassistent som skal hjelpe et IT konsulentselskap med å oppsummere dokumenter.
+Du skal være en hjelpsom og hyggelig assistent som er flink til å oppsummere dokumenter.
+Du skal ikke bruke unødvendig fancy ord.
+Du skal ikke gjenta spørsmålet i svaret.
+Du skal gi grundige svar, med forklaringer.
+Du skal skrive om blant annet:
+- Hva ønsker kunden å få ut av prosjektet?
+- Hvilke krav har kunden?
+- Frister
+- Budsjett
+- Hvilke kompetanse trenger kunden?
+- Andre ting som er relevant for prosjektet
+
+02/01/2024 11:52:15 ---------------------------
+02/01/2024 11:52:36 Uploading file 'konkurranse_renhold.docx' to assistant asst_i8TPJgO78HGpafG37Kk6QIOk
+02/01/2024 11:52:44 Thread created: thread_1hBFr3hSQVrNs8NqBHOqYusS
+02/01/2024 11:53:06 > Oppsummer dokumentet "konkurranse_renhold.docx"
+02/01/2024 11:54:22 GPT
+Dokumentet "konkurranse_renhold" beskriver en konkurranse utlyst av Møre og Romsdal fylkeskommune ved Bygg- og eiendomstjenester. Konkurransen omfatter anskaffelse av tjenester rettet mot å forenkle, forbedre og digitalisere arbeidsprosesser knyttet til renhold i byggene fylkeskommunen har ansvar for. Dette gjelder en bygningsmasse på over 220 000 m2 fordelt på mer enn 160 bygninger【7†source】.
+
+**Hovedmålsetninger for prosjektet:**
+- Formålet med anskaffelsen er å optimere arbeidsprosesser relatert til renhold.
+- Målgruppen for systemet er mellom 70 og 100 brukere.
+
+**Viktige datoer og frister:**
+- Detaljerte datoer er ikke gitt, men disse vil bli kommunisert via Mercell, en portal for offentlige anskaffelser. 
+- Evalueringen er planlagt til uke 7-9, med valg av leverandør og varsling i uke 10. En karensperiode vil følge på minimum 10 dager etter tildelingen【7†source】.
+
+**Vurderingskriterier og tildeling:**
+- Tildelingskriteriene vektlegger pris til 35% og kvalitet til 65%.
+- Prisen vil bli evaluert basert på utfylte prisskjemaer, og kvaliteten blir målt etter kravene merket som "kategori B" i kravspesifikasjonen【15†source】.
+
+**Krav til tilbud og tilbudsprosessen:**
+- Alle dokumenter og kommunikasjon i tilbudet skal være på norsk, men med mulighet for å inkludere engelsk, svensk eller dansk dokumentasjon hvor norskspråklig dokumentasjon ikke finnes.
+- Tilbudene må leveres elektronisk via Mercell innen den angitte fristen, og tilbud som sendes etter fristens utløp vil ikke bli akseptert.
+- Tilbudet krever elektronisk signatur ved innlevering.
+- Spesifikke deler av tilbudet omfatter blant annet tilbudsbrev, kravspesifikasjon, pristilbud, forpliktelseserklæring og en sladdet versjon av tilbudet for innsynshåndtering【15†source】【17†source】.
+
+**Kontraktstildeling og følgende trinn:**
+- Beslutningen om tildeling vil bli kommunisert til alle deltakere med en begrunnelse, etterfulgt av en karensperiode.
+- Avtalen som inngås vil følge Statens standardavtale SSA-L, med en initial varighet på 4 år og mulighet for fornyelse for ytterligere opp til 4 år【17†source】.
+
+Dokumentet inneholder også bestemmelser relatert til seriøsitetskrav, elektronisk fakturering, og krav til registrering i Merverdiavgiftsregisteret for utenlandsk næringsdrivende【17†source】.
+02/01/2024 12:04:25 Uploading file 'bilag.docx' to assistant asst_i8TPJgO78HGpafG37Kk6QIOk
+02/01/2024 12:04:44 > Oppsummer dokumentet "bilag.docx"
+02/01/2024 12:06:54 GPT
+Dokumentet "bilag.docx" er en del av konkurransegrunnlaget for et digitalt renholdssystem, og inneholder detaljerte bilag og spesifikasjoner relatert til anbudet fra Møre og Romsdal fylkeskommune:
+
+- **Bilag 1 til 11**: Dekker alt fra oppdragsgivers kravspesifikasjon, leverandørens tjenestebeskrivelse, plan for etableringsfasen, tjenestenivå med standardiserte kompensasjoner, administrative bestemmelser, økonomiske aspekter, til databehandleravtalen【19†source】.
+
+**Kjernepunkter i krav og spesifikasjoner inkluderer:**
+
+- **Bærekraft og effektivisering**: Renholdstjenesten skal benytte bærekraftig og effektiviserende teknologi, samle renholdsplaner i et digitalt system og gjøre dem tilgjengelige for renholdspersonell. Systemet skal støtte delt renholdsareal på ca. 160.000 m^2 konsentrert i videregående skoler og idrettshaller【19†source】.
+  
+- **Opsjoner for utvidet bruk**: Det er inkludert opsjoner for ytterligere bruk av systemet, som dekker behovet til Fylkeshuset AS og eksterne renholdsleverandører, samt integrasjon med ulike sluttbrukeres booking av rom【19†source】.
+
+- **Funksjonalitet**: Systemet skal tilby en rekke funksjoner som tegningsbasert planleggingsverktøy, mobil grensesnitt, nettbasert løsning for ledere og support på norsk. Videre kreves det universell utforming og støtte for å håndtere et stort antall samtidige brukere【23†source】.
+
+- **Brukervennlighet**: Renholdspersonell skal kunne dokumentere arbeid, melde avvik, og oppdragsgiver skal kunne administrere brukere, definere ekstraoppgaver og kommunisere bestillinger og meldinger gjennom systemet. Det vektlegges at systemet støtter offline-funksjonalitet og er brukervennlig både for ledere og renholdere【23†source】.
+
+- **Brukerstøtte og stabilitet**: Support skal være norsk-talende og kunne varsle om kjente feil i systemet samt planlagt nedetid. Beskrivelse av brukerstøtteapparatet, inkludert tilgjengelighet, antall supportmedarbeidere og gjennomsnittlig svartid er nødvendig【27†source】.
+
+- **Personvern og sikkerhet**: Det legges vekt på databeskyttelse og informasjonssikkerhet. Blant annet må leverandøren ha et styringssystem for informasjonssikkerhet som møter gjeldende personvernregler, og det skal være klare rutiner for revisjon og tilsyn samt protokoller for hvordan personopplysninger håndteres ved avtalens opphør. Kontaktinformasjon for varsling om sikkerhetsbrudd eller andre relevante henvendelser er også nevnt【45†source】.
+
+Dokumentets detaljerte natur gjenspeiler oppdragsgivers intensjon om å sikre en omfattende og kvalitetssikret løsning som imøtekommer organisasjonens nåværende og fremtidige behov på en bærekraftig, brukervennlig, og sikker måte.
+02/01/2024 12:13:31 
+---------------------------
+Session ended
+---------------------------
+02/01/2024 12:18:33 
+---------------------------
+Session started
+---------------------------
+02/01/2024 12:18:37 Creating kompetansematrise with test consultant data and oppsummering from previous session
+02/01/2024 12:18:38 Kompetansematrise data:
+
+02/01/2024 12:19:30 {
+  "kompetansematrise": [
+    {
+      "kategori": "Backend-utvikler",
+      "navn": "Emilie Solberg",
+      "kompetanse": "7 år erfaring. Spesialisert i C#, .NET og Azure. Har jobbet med skybaserte løsninger og fokus på GDPR-krav."
+    },
+    {
+      "kategori": "DevOps-ingeniør",
+      "navn": "Emilie Solberg",
+      "kompetanse": "7 år erfaring. Erfaren med CI/CD-pipelines, sikkerhetsvurderinger og datalagring."
+    },
+    {
+      "kategori": "Fullstack-utvikler",
+      "navn": "Oskar Fjellheim",
+      "kompetanse": "12 år erfaring. Erfaren med Java, Spring Framework og Angular. Ledet utviklingen av webapplikasjoner og HMS-løsninger."
+    },
+    {
+      "kategori": "Prosjektleder",
+      "navn": "Oskar Fjellheim",
+      "kompetanse": "12 år erfaring. Dyktig i å lede utviklingsteam og håndtere store datamengder."
+    },
+    {
+      "kategori": "UX/UI Designer",
+      "navn": "Sara Vik",
+      "kompetanse": "10 år erfaring. Spesialisert i Python, Django og React. fokus på brukeropplevelse og tilgjengelighet."
+    },
+    {
+      "kategori": "Prosjektleder",
+      "navn": "Sara Vik",
+      "kompetanse": "10 år erfaring. Ledet tverrfaglige team i innovasjonslab. Fokus på brukersentrisk design og smidig metodikk."
+    },
+    {
+      "kategori": "Systemarkitekt",
+      "navn": "Jonas Hansen",
+      "kompetanse": "8 år erfaring. Spesialisert i Java, Kafka og Cassandra. Arbeidet med utvikling av distribuerte systemer."
+    },
+    {
+      "kategori": "Backend-utvikler",
+      "navn": "Jonas Hansen",
+      "kompetanse": "8 år erfaring. Erfaren med Docker, Kubernetes og Spring Boot. Jobbet med refaktorisering til mikrotjenester."
+    },
+    {
+      "kategori": "Frontend-utvikler",
+      "navn": "Lena Nilsen",
+      "kompetanse": "5 år erfaring. Spesialisert i JavaScript, React og Node.js. Arbeidet med utvikling av progressive webapplikasjoner (PWA)."
+    },
+    {
+      "kategori": "Fullstack-utvikler",
+      "navn": "Lena Nilsen",
+      "kompetanse": "5 år erfaring. Dyktig i Node.js, MongoDB og JWT. Implementert betalingsløsninger og brukerautentisering."
+    }
+  ]
+}
